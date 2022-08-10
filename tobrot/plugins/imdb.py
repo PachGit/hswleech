@@ -23,6 +23,7 @@ async def imdb_search(client, message):
         k = await message.reply('<code>Searching IMDB ...</code>', parse_mode=enums.ParseMode.HTML)
         r, title = message.text.split(None, 1)
         user_id_ = message.from_user.id
+        LOGGER.info(user_id_)
         if title.lower().startswith("tt"):
             movieid = title.replace("tt", "")
             movie = imdb.get_movie(movieid)
@@ -169,7 +170,8 @@ def list_to_hash(k):
 
 @app.on_callback_query(filters.regex('^imdb'))
 async def imdb_callback(bot, quer_y: CallbackQuery):
-    i, movie, from_user = quer_y.data.split('#')
+    splitData = quer_y.data.split('#')
+    movie, from_user = splitData[1], splitData[2]
     imdb = await get_poster(query=movie, id=True)
     btn = [
             [
