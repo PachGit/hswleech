@@ -89,10 +89,12 @@ def bot_button_stats():
 ┏━━━━ 𝗕𝗼𝘁 𝗦𝘁𝗮𝘁𝘀 ━━━━━╻
 ┃ ᑕᑭᑌ: {progress_bar(cpu)} {cpu}% 
 ┃ ᖇᗩᗰ: {progress_bar(ram)} {ram}%  
+┃
 ┃ T-ᗪᒪ : {sent} ┃ T-ᑌᒪ : {recv}
 ┃ ᑌᑭTIᗰᗴ : {hr}h {mi}m {se}s
-┃ TOTᗩᒪ: {total} ┃ ᖴᖇᗴᗴ: {free} 
-┗━━━━━━━━━━━━━━━━━╹'''
+┃
+┃ T: {total} ┃ ᖴ: {free} 
+┗━━━━━━━━━━━━━━━━╹'''
     return stats
 
 async def status_message_f(client, message):
