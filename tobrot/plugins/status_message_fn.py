@@ -12,7 +12,7 @@ from asyncio import sleep as asleep, subprocess, create_subprocess_shell
 from io import BytesIO, StringIO
 from os import path as opath, remove as oremove
 from shutil import disk_usage
-from sys import stdout, stderr
+from sys import stdout as sysstdout, stderr as sysstderr
 from time import time, sleep as tsleep
 from traceback import format_exc
 from psutil import virtual_memory, cpu_percent, net_io_counters
@@ -282,10 +282,10 @@ async def eval_message_f(client, message):
     if message.reply_to_message:
         reply_to_id = message.reply_to_message.id
 
-    old_stderr = stderr
-    old_stdout = stdout
-    redirected_output = stdout = StringIO()
-    redirected_error = stderr = StringIO()
+    old_stderr = sysstderr
+    old_stdout = sysstdout
+    redirected_output = sysstdout = StringIO()
+    redirected_error = sysstderr = StringIO()
     stdout, stderr, exc = None, None, None
 
     try:
@@ -295,8 +295,8 @@ async def eval_message_f(client, message):
 
     stdout = redirected_output.getvalue()
     stderr = redirected_error.getvalue()
-    stdout = old_stdout
-    stderr = old_stderr
+    sysstdout = old_stdout
+    sysstderr = old_stderr
 
     evaluation = ""
     if exc:
