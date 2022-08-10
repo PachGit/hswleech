@@ -205,7 +205,7 @@ STRING_SESSION = getVar("STRING_SESSION", "")
 #Bot Command [IMDB]  >>>>>>>>>>>
 CUSTOM_CAPTION = getVar("CUSTOM_CAPTION", "")
 MAX_LIST_ELM = getVar("MAX_LIST_ELM", None)
-DEF_IMDB_TEMPLATE = getVar("""<b>#{title} (#{year}) • #{aka}</b> 
+DEF_IMDB_TEMPLATE = getVar("IMDB_TEMPLATE","""<b>#{title} (#{year}) • #{aka}</b> 
 <i>#{runtime}</i> ⭐️<b>#{rating}</b> 
 <a href="#{poster}">IMDb</a>
 
