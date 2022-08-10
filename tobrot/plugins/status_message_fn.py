@@ -86,13 +86,13 @@ def bot_button_stats():
     sent = humanbytes(net_io_counters().bytes_sent)
     recv = humanbytes(net_io_counters().bytes_recv)
     stats = f'''
-┏━━━━ 𝗕𝗼𝘁 𝗦𝘁𝗮𝘁𝘀 ━━━━━
+┏━━━━ 𝗕𝗼𝘁 𝗦𝘁𝗮𝘁𝘀 ━━━━━╻
 ┃ ᑕᑭᑌ: {progress_bar(cpu)} {cpu}% 
 ┃ ᖇᗩᗰ: {progress_bar(ram)} {ram}%  
-┃ ᗪᒪ : {sent} ┃ ᑌᒪ : {recv}
+┃ T-ᗪᒪ : {sent} ┃ T-ᑌᒪ : {recv}
 ┃ ᑌᑭTIᗰᗴ : {hr}h {mi}m {se}s
-┃ T: {total} ┃ ᖴ: {free}
-┗━━━━━━━━━━━━━━━━━━'''
+┃ TOTᗩᒪ: {total} ┃ ᖴᖇᗴᗴ: {free} 
+┗━━━━━━━━━━━━━━━━━╹'''
     return stats
 
 async def status_message_f(client, message):
