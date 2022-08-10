@@ -23,7 +23,6 @@ async def imdb_search(client, message):
         k = await message.reply('<code>Searching IMDB ...</code>', parse_mode=enums.ParseMode.HTML)
         r, title = message.text.split(None, 1)
         user_id_ = message.from_user.id
-        LOGGER.info(user_id_)
         if title.lower().startswith("tt"):
             movieid = title.replace("tt", "")
             movie = imdb.get_movie(movieid)
@@ -182,7 +181,7 @@ async def imdb_callback(bot, quer_y: CallbackQuery):
             ]
         ]
     message = quer_y.message.reply_to_message or quer_y.message
-    template = IMDB_TEMPLATE.get(from_user, "")
+    template = IMDB_TEMPLATE.get(int(from_user), "")
     LOGGER.info(IMDB_TEMPLATE)
     LOGGER.info(from_user)
     LOGGER.info(template)
