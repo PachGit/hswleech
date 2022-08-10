@@ -210,7 +210,7 @@ DEF_IMDB_TEMPLATE = getVar("IMDB_TEMPLATE","""<b>#{title} (#{year}) • #{aka}</
 <a href="#{poster}">IMDb</a>
 
 Director: {director}
-Actors: {actor}
+Actors: {cast}
 
 Genres: {genres}
 #{plot}
