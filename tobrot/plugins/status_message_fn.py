@@ -19,6 +19,7 @@ from psutil import virtual_memory, cpu_percent, net_io_counters
 
 from pyrogram.errors import FloodWait, MessageIdInvalid, MessageNotModified
 from pyrogram import enums
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton 
 from tobrot.helper_funcs.admin_check import AdminCheck
 from tobrot import (
     AUTH_CHANNEL,
