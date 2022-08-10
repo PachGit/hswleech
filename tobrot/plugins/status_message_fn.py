@@ -152,7 +152,8 @@ async def status_message_f(client, message):
         mssg = f"\n❣𝙎𝙩𝙖𝙩𝙪𝙨 : {umen} (<code>{message.from_user.id}</code>)\n◆━━━━━━◆ ❃ ◆━━━━━━◆"
         
         button_markup = InlineKeyboardMarkup([
-            [InlineKeyboardButton('Sᴛᴀᴛs\nCʜᴇᴄᴋ', callback_data="stats")]
+            [InlineKeyboardButton('Sᴛᴀᴛs\nCʜᴇᴄᴋ', callback_data="stats"),
+             InlineKeyboardButton('Cʟᴏsᴇ', callback_data="admin_close")]
         ])
 
         if msg == "":
