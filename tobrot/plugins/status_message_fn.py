@@ -40,6 +40,7 @@ from tobrot.helper_funcs.display_progress import humanbytes
 from tobrot.helper_funcs.download_aria_p_n import aria_start
 from tobrot.helper_funcs.upload_to_tg import upload_to_tg
 from tobrot.database.db_func import DatabaseManager
+from tobrot.bot_theme.themes import BotTheme
 
 async def upload_as_doc(client, message):
     uid = message.from_user.id
@@ -48,7 +49,8 @@ async def upload_as_doc(client, message):
         DatabaseManager().user_doc(uid)
         LOGGER.info("[DB] User Toggle DOC Settings Saved to Database")
     u_men = message.from_user.mention
-    await message.reply_text(f"┏━━ 🛠  𝗧𝗼𝗴𝗴𝗹𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀 :\n┣ 👤 𝐔𝐬𝐞𝐫 : {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷 𝐓𝐨𝐠𝐠𝐥𝐞 : 📁<code>Document 📂</code>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹")
+    await message.reply_text((BotTheme()).STATUS_MSG)
+    #await message.reply_text(f"┏━━ 🛠  𝗧𝗼𝗴𝗴𝗹𝗲 𝗦𝗲𝘁𝘁𝗶𝗻𝗴𝘀 :\n┣ 👤 𝐔𝐬𝐞𝐫 : {u_men} \n┣🆔️ 𝐈𝐃 : #ID{message.from_user.id}\n┃\n┣🏷 𝐓𝐨𝐠𝐠𝐥𝐞 : 📁<code>Document 📂</code>\n┃\n┗━♦️ℙ𝕠𝕨𝕖𝕣𝕖𝕕 𝔹𝕪 {UPDATES_CHANNEL}♦️━╹")
 
 async def upload_as_video(client, message):
     uid = message.from_user.id
