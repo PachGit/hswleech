@@ -7,12 +7,13 @@
 # This is Part of < https://github.com/5MysterySD/Tele-LeechX >
 # All Right Reserved
 
+import sys
+
 from math import floor
 from asyncio import sleep as asleep, subprocess, create_subprocess_shell
 from io import BytesIO, StringIO
 from os import path as opath, remove as oremove
 from shutil import disk_usage
-from sys import stdout as sysstdout, stderr as sysstderr
 from time import time, sleep as tsleep
 from traceback import format_exc
 from psutil import virtual_memory, cpu_percent, net_io_counters
@@ -282,10 +283,10 @@ async def eval_message_f(client, message):
     if message.reply_to_message:
         reply_to_id = message.reply_to_message.id
 
-    old_stderr = sysstderr
-    old_stdout = sysstdout
-    redirected_output = sysstdout = StringIO()
-    redirected_error = sysstderr = StringIO()
+    old_stderr = sys.stderr
+    old_stdout = sys.stdout
+    redirected_output = sys.stdout = StringIO()
+    redirected_error = sys.stderr = StringIO()
     stdout, stderr, exc = None, None, None
 
     try:
@@ -295,8 +296,8 @@ async def eval_message_f(client, message):
 
     stdout = redirected_output.getvalue()
     stderr = redirected_error.getvalue()
-    sysstdout = old_stdout
-    sysstderr = old_stderr
+    sys.stdout = old_stdout
+    sys.stderr = old_stderr
 
     evaluation = ""
     if exc:
